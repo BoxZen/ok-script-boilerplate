@@ -52,7 +52,7 @@ config = {
     'use_gui': True, # 目前只支持True
     'config_folder': 'configs', #最好不要修改
     'global_configs': [key_config_option],
-    'screenshot_processor': make_bottom_right_black, # 在截图的时候对frame进行修改, 可选
+    'screenshot_processor': None, # 在截图的时候对frame进行修改, 可选
     'gui_icon': 'icons/icon.png', #窗口图标, 最好不需要修改文件名
     'wait_until_before_delay': 0,
     'wait_until_check_delay': 0,
@@ -64,18 +64,15 @@ config = {
         }
     },
     'windows': {  # Windows游戏请填写此设置
-        'exe': ['StarRail.exe'],
+        'exe': ['gakumas.exe'],
         # 'hwnd_class': 'UnrealWindow', #增加重名检查准确度
-        'interaction': 'Genshin', # Genshin:某些操作可以后台, 部分游戏支持 PostMessage:可后台点击, 极少游戏支持 ForegroundPostMessage:前台使用PostMessage Pynput/PyDirect:仅支持前台使用
+        'interaction': 'ForegroundPostMessage', # Genshin:某些操作可以后台, 部分游戏支持 PostMessage:可后台点击, 极少游戏支持 ForegroundPostMessage:前台使用PostMessage Pynput/PyDirect:仅支持前台使用
         'capture_method': ['WGC', 'BitBlt_RenderFull'],  # Windows版本支持的话, 优先使用WGC, 否则使用BitBlt_Full. 支持的capture有 BitBlt, WGC, BitBlt_RenderFull, DXGI
         'check_hdr': True, #当用户开启AutoHDR时候提示用户, 但不禁止使用
         'force_no_hdr': False, #True=当用户开启AutoHDR时候禁止使用
         'require_bg': True # 要求使用后台截图
     },
-    'adb': {  # Windows游戏请填写此设置, mumu模拟器使用原生截图和input,速度极快. 其他模拟器和真机使用adb,截图速度较慢
-        'packages': ['com.abc.efg1', 'com.abc.efg1']
-    },
-    'start_timeout': 120,  # default 60
+    'start_timeout': 60,  # default 60
     'window_size': { #ok-script窗口大小
         'width': 1200,
         'height': 800,
@@ -83,9 +80,9 @@ config = {
         'min_height': 450,
     },
     'supported_resolution': {
-        'ratio': '16:9', #支持的游戏分辨率
-        'min_size': (1280, 720), #支持的最低游戏分辨率
-        'resize_to': [(2560, 1440), (1920, 1080), (1600, 900), (1280, 720)], #可选, 如果非16:9自动缩放为 resize_to
+        'ratio': '9:16', #支持的游戏分辨率
+        'min_size': (540, 960), #支持的最低游戏分辨率
+        'resize_to': [(720, 1280),(1080, 1920)], #可选, 如果非16:9自动缩放为 resize_to
     },
     'analytics': {
         'report_url': 'http://report.ok-script.cn:8080/report', #上报日活, 可选
@@ -110,16 +107,13 @@ config = {
     'version': version, #版本
     'my_app': ['src.globals', 'Globals'], #可选. 全局单例对象, 可以存放加载的模型, 使用og.my_app调用
     'onetime_tasks': [  # 用户点击触发的任务
-        ["src.tasks.MyOneTimeTask", "MyOneTimeTask"],
-        ["src.tasks.MyOneTimeWithAGroup", "MyOneTimeWithAGroup"],
-        ["src.tasks.MyOneTimeWithAGroup2", "MyOneTimeWithAGroup2"],
-        ["src.tasks.MyOneTimeWithBGroup", "MyOneTimeWithBGroup"],
+        ["src.tasks.DailyTask", "DailyTask"],
         ["ok", "DiagnosisTask"],
     ],
-    'trigger_tasks':[ # 不断执行的触发式任务
-        ["src.tasks.MyTriggerTask", "MyTriggerTask"],
-    ],
-    'custom_tabs': [
-        ['src.ui.MyTab', 'MyTab'], #可选, 自定义UI, 显示在侧边栏
-    ],
+    #'trigger_tasks':[ # 不断执行的触发式任务
+    #    ["src.tasks.MyTriggerTask", "MyTriggerTask"],
+    #],
+    #'custom_tabs': [
+    #    ['src.ui.MyTab', 'MyTab'], #可选, 自定义UI, 显示在侧边栏
+    #],
 }
