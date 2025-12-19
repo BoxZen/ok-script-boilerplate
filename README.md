@@ -1,13 +1,9 @@
-## ok-script boilerplate
-ok-script模板项目, 用于fork后快速开始你的项目
+# ok-script boilerplate
+使用<a href="https://github.com/ok-oldking/ok-script">ok-script</a>開發, 作用於學園偶像大師上的自動化工具
 
-## ok-script文档和示例代码
-
-* [游戏自动化入门](https://github.com/ok-oldking/ok-script/blob/master/docs/intro_to_automation/README.md)
-* [快速开始](https://github.com/ok-oldking/ok-script/blob/master/docs/quick_start/README.md)
-* [进阶使用](https://github.com/ok-oldking/ok-script/blob/master/docs/after_quick_start/README.md)
-* [API文档](https://github.com/ok-oldking/ok-script/blob/master/docs/api_doc/README.md)
-* 开发者群: 938132715
+## 免責聲明
+本項目僅供技術研究與學習使用，並非用於任何商業或不正當的遊戲行為。<br>
+使用本項目產生的所有後果由使用者自行承擔，開發者不對任何直接或間接損失負責。
 
 #### 文件说明
 ```
@@ -18,7 +14,6 @@ deploy.txt 同步到更新库的文件列表, 如tests文件夹
 main.py 入口
 main_debug.py debug入口
 pyappify.yml 打包exe配置文件
-i18n 国际化文件, 可选
 assets cv2使用的template, 需要使用coco格式
 .github/workflows/build.yml 自动化构建任务
 ```
