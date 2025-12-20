@@ -10,8 +10,8 @@ class BaseIMASTask(BaseTask):
     def home_checking(self):
         box = self.wait_feature('home', time_out=3)
         if not box:
-            self.sleep(0.5)
             self.log_debug('home_checking: home 未找到')
+            self.sleep(0.5)
             if not self.wait_click_feature('homeflag_grey', raise_if_not_found=False,box = "bottom_left"):
                 self.log_debug('home_checking: homeflag_grey 未找到')
                 if not self.wait_click_feature('homeflag', raise_if_not_found=False,box = "bottom"):
