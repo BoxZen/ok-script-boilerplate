@@ -21,12 +21,14 @@ class BaseIMASTask(BaseTask):
         return True
     
     def click_next_button(self):
+        self.sleep(1)
         if not self.wait_click_feature('next_button', raise_if_not_found=False, box = "bottom"):
             self.log_debug('click_next_button: next_button 未找到')
             return False
         return True
     
     def click_yes_button(self):
+        self.sleep(1)
         if not self.wait_click_feature('yes_button',time_out = 1, raise_if_not_found=False, box = "bottom",click_after_delay=1):
             self.log_debug('click_yes_button: yes_button 未找到')
             return False
@@ -49,6 +51,12 @@ class BaseIMASTask(BaseTask):
         if not self.wait_click_feature('back', time_out=1, raise_if_not_found=False, after_sleep=1,click_after_delay=1):
             self.log_debug('click_back_button: back 未找到')
             return False
+        return True
+    
+    def clicker(self, num_clicks, x=0.5, y=0.5, delay_between_clicks=0.5):
+        for _ in range(num_clicks):
+            self.click(x, y)
+            self.sleep(delay_between_clicks)
         return True
 
     def test(self):

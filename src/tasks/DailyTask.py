@@ -136,7 +136,9 @@ class DailyTask(BaseIMASTask):
             self.log_debug('work: work 未找到')
             self.log_info('任務:工作失敗')
             return False
+        self.clicker(10)
         self.click_yes_button()
+        self.clicker(5)
         self.click_yes_button()
         if self.wait_click_feature('work_left', time_out=1, raise_if_not_found=False, click_after_delay=1):
             self.click_next_button()
@@ -145,7 +147,7 @@ class DailyTask(BaseIMASTask):
             self.click_yes_button()
         else:
             self.log_debug('work: work_left 未找到')
-
+        self.clicker(4,0.5,0.1,0.25)
         if self.wait_click_feature('work_right', time_out=1, raise_if_not_found=False, click_after_delay=1):
             self.click_next_button()
             self.click_yes_button()
@@ -212,8 +214,7 @@ class DailyTask(BaseIMASTask):
             self.wait_click_feature('challenge_start', time_out=5, raise_if_not_found=False,click_after_delay=2)
             self.sleep(5)
             self.wait_click_feature('challenge_skip', time_out=5, raise_if_not_found=False,click_after_delay=1)
-            for _ in range(40):
-                self.click(0.5,0.9)
-                self.sleep(0.25)
-
+            while(self.wait_click_feature('challenge_finish', raise_if_not_found=False, after_sleep=3) == False):
+                self.clicker(3,0.5,0.9,0.25)
+        
         return True
