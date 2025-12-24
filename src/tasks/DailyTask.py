@@ -212,9 +212,9 @@ class DailyTask(BaseIMASTask):
         self.sleep(2)
         while(self.wait_click_feature('challenge_battle_total', time_out=5, raise_if_not_found=False,click_after_delay=1)):
             self.wait_click_feature('challenge_start', time_out=5, raise_if_not_found=False,click_after_delay=2)
-            self.sleep(5)
-            self.wait_click_feature('challenge_skip', time_out=5, raise_if_not_found=False,click_after_delay=1)
-            while(self.wait_click_feature('challenge_finish', raise_if_not_found=False, after_sleep=3) == False):
-                self.clicker(3,0.5,0.9,0.25)
+            self.sleep(2)
+            self.wait_click_feature_color('challenge_skip',color_percentage=0.05 ,time_out=10, raise_if_not_found=False,settle_time=1)
+            while(self.wait_click_feature('challenge_finish', raise_if_not_found=False, after_sleep=1) == False):
+                self.clicker(4,0.5,0.9,0.25)
         
         return True

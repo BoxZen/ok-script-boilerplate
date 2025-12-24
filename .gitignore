@@ -68,3 +68,6 @@ working_images/
 # self ignore
 .temp/
 .vscode/
+
+# temp ignore
+tests/
